@@ -1,16 +1,22 @@
 # Starting fresh?
 
-x. Install `[zsh](https://ohmyz.sh/)`
-x. Install `[homebrew](https://brew.sh)`
-x. Install `[chezmoi](https://www.chezmoi.io/quick-start/)`
-x. Install `[neovim](https://neovim.io/)`
+1. Install `[zsh](https://ohmyz.sh/)`
+
+2. Install `[homebrew](https://brew.sh)`
+
+3. Install `[chezmoi](https://www.chezmoi.io/quick-start/)`
+
+4. Install `[neovim](https://neovim.io/)`
 
 Sync with `chezmoi` in one line:
 ```sh
 chezmoi init --apply $GITHUB_USERNAME
 ```
 
-Manual `chezmoi` setup:
+<hr />
+
+# Manual `chezmoi` setup:
+
 Using `chezmoi` you can quickly get set up with configs you're already used to.
 
 ```sh
