@@ -1,12 +1,12 @@
 # Starting fresh?
 
-1. Install `[zsh](https://ohmyz.sh/)`
+1. Install [`zsh`](https://ohmyz.sh/)
 
-2. Install `[homebrew](https://brew.sh)`
+2. Install [`homebrew`](https://brew.sh)
 
-3. Install `[chezmoi](https://www.chezmoi.io/quick-start/)`
+3. Install [`chezmoi`](https://www.chezmoi.io/quick-start/)
 
-4. Install `[neovim](https://neovim.io/)`
+4. Install [`neovim`](https://neovim.io/)
 
 Sync with `chezmoi` in one line:
 ```sh
