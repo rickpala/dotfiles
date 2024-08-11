@@ -102,6 +102,10 @@ require("lazy").setup({
     "folke/zen-mode.nvim",
     "eandrju/cellular-automaton.nvim",
     "laytan/cloak.nvim",
+
+    {"neoclide/coc.nvim", branch = "release"},
+    {"junegunn/fzf.vim"},
+
 })
 
 

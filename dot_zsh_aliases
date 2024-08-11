@@ -1,3 +1,7 @@
-alias ct="code googlemac/iPhone/UniversalContentPrimitive/CreationTool/StoryKit.code-workspace"
-alias iga="code googlemac/GoogleMobile/Google.code-workspace"
+# Change Directory go_links
+alias go_lens="cd googlemac/iPhone/Lens"
+alias go_iga="cd googlemac/GoogleMobile"
+alias go_photos="cd googlemac/iPhone/Photos"
+
+# Fig aliases
 alias fau="hg fix && hg amend && hg uc"

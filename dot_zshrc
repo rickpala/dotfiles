@@ -247,5 +247,27 @@ iterm2_print_user_vars() {
 
 }
 
+# Enable Vim in the shell
+bindkey -v
 
+eval "$(zoxide init zsh)"
 
+# Use the default zsh config for fuzzyfinder
+source <(fzf --zsh)
+
+# TODO: Add zshrc for google3 fzf codesearch
+# source ~/.bash_functions
+
+# [[ $- == *i* ]] && source /usr/share/zsh-completion/completions/fzf 2> /dev/null
+# TODO: Find the right way to reference this path, because the version number will change.
+# source /opt/homebrew/Cellar/fzf/0.54.3/shell/key-bindings.zsh
+
+# Add fzf support for custom commands
+# fzf-completion path g4 devsite evsite
+
+# Configure bindings
+# export FZF_CTRL_T_COMMAND=_fzf_compgen_path
+# export FZF_DEFAULT_COMMAND=_fzf_compgen_path
+# export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
+
+# Will chezmoi see this change?
