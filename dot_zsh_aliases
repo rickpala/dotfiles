@@ -1,3 +1,4 @@
+alias gcertall="gcert; ssh -t rickpala.c.googlers.com 'gcert; sh -i; exit'"
 # Change Directory go_links
 alias go_lens="cd googlemac/iPhone/Lens"
 alias go_iga="cd googlemac/GoogleMobile"
