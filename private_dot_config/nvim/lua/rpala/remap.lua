@@ -46,7 +46,6 @@ vim.keymap.set("n", "<leader>t", function()
     feedkeys("\"_dd", "n")
 
     end_time = os.time()
-    print("elapsed: " .. os.difftime(end_time, start_time))
 end)
 
 vim.keymap.set("n", "<leader>tp", "\"tp")

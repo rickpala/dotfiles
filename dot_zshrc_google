@@ -81,7 +81,7 @@ work() {
 }
 
 iterm2_print_user_vars() {
-  if ! type "$citctools" > /dev/null; then
+  if ! (( $+commands[citctools] )); then
     echo "citctools not installed on this shell. Are you running on a gMac?"
     return 1
   fi
