@@ -50,7 +50,7 @@ source $ZSH/oh-my-zsh.sh
 
 if [[
   $HOSTNAME == "google_macbook"
-  || $HOSTNAME="google_macstudio"
+  || $HOSTNAME == "google_macstudio"
   || $HOSTNAME == "personal_macbook" ]]; then 
   source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
   source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
