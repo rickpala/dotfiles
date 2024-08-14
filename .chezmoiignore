@@ -1,3 +1,5 @@
 README.md
 
 .config/nvim/xcode-build-server/
+.vim/undodir/
+.zsh_history
