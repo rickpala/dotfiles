@@ -1,17 +1,44 @@
-# Starting fresh?
+# 🖥️ Setting up a new Mac?
+
+Install these apps first:
+* [Raycast](https://www.raycast.com)
+* [Rectangle](https://rectangleapp.com)
+* [Setapp](https://setapp.com)
+* [iTerm2](https://iterm2.com)
+* [Xcode](https://apple.com/xcode)
+* [Scroll Reverser](https://pilotmoon.com)
+
+# 💲 Setting up a new Shell environment on MacOS?
 
 1. Install [`zsh`](https://ohmyz.sh/)
 
 2. Install [`homebrew`](https://brew.sh)
 
-3. Install [`chezmoi`](https://www.chezmoi.io/quick-start/)
+3. Install [`neovim`](https://neovim.io/)
 
-4. Install [`neovim`](https://neovim.io/)
+4. Install [`chezmoi`](https://www.chezmoi.io/quick-start/)
 
-Sync with `chezmoi` in one line:
+If you already have an existing chezmoi environment, sync to Github remote in one line:
 ```sh
 chezmoi init --apply $GITHUB_USERNAME
 ```
+
+If you need to make edits to your dotfiles, use:
+```sh
+chezmoi edit <filename>
+```
+
+Once you're ready to push your changes to remote, use:
+```sh
+chezmoi git -- add
+chezmoi git -- commit -m "Update dotfiles"
+```
+
+You can store machine-specific data in the config file. By default it is
+`~/.config/chezmoi/chezmoi.toml`.
+
+Read more about chezmoi's daily operations at
+[chezmoi.io/user-guide/daily-operations](chezmoi.io/user-guide/daily-operations)
 
 <hr />
 

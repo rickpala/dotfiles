@@ -1,0 +1,110 @@
+# Important for gLinux setup
+if [[ -f /etc/bash_completion.d/hgd ]]; then
+  source /etc/bash_completion.d/hgd
+fi
+
+gcertIfNeeded() {
+  if ! type "$gcertstatus" > /dev/null; then
+    echo "gcert not installed on this shell. Are you running on a gMac?"
+    return 1
+  fi
+  if gcertstatus; then
+      echo "gcert wasn't needed"
+  else
+      gcert
+  fi
+}
+
+creationToolOrIga() {
+  # run `sk` or `iga` depending on dir
+  PS3="Working in CreationTool or iGA?"$'\n'
+  select opt in CreationTool iGA
+  do
+    case $opt in
+      "CreationTool")
+        cd googlemac/iPhone/UniversalContentPrimitive/CreationTool
+        code StoryKit.code-workspace
+        break ;;
+      "iGA")
+        iga 
+        cd googlemac/GoogleMobile
+        code Google.code-workspace
+        break ;;
+      *) 
+        echo "Defaulting to google3/"
+        break ;;
+    esac
+  done
+}
+
+work() {
+  # check if cl/# passed in
+  # check if b/# passed in
+  if [[ $# < 1 ]]; then
+      echo "Error: At least 1 argument must be passed. $# were found."
+      return 1
+  fi
+  if ! type "$hgd" > /dev/null; then
+    echo "hgd not installed on this shell. Are you running on a gMac?"
+    return 1
+  fi
+  rawShortlink=$1
+  workspace=""
+
+  if [[ ! ( $rawShortlink == cl* || $rawShortlink == b* ) ]]; then
+    echo "Error: A b/ or cl/ shortlink was not found. Received $rawShortlink."
+  fi
+
+  # if a CL number is passed, no need for manipulation
+  if [[ $rawShortlink == cl* ]]; then
+    workspace=$rawShortlink
+  fi 
+    
+  # if a B number is passed, drop the "/"
+  if [[ $rawShortlink == b* ]]; then
+    if [[ $rawShortlink == b/* ]]; then
+        workspace=$(echo "$rawShortlink" | sed "s:/::")
+    fi
+  fi
+  
+  if [[ -z $workspace ]]; then
+    echo "Error: $workspace not filled"
+  else
+    echo "Using workspace name: $workspace"
+  fi
+
+
+  gcertIfNeeded
+  hgd -f $workspace
+  creationToolOrIga
+  return 0
+}
+
+iterm2_print_user_vars() {
+  if ! (( $+commands[citctools] )); then
+    echo "citctools not installed on this shell. Are you running on a gMac?"
+    return 1
+  fi
+
+  if [[ $PWD == /google* ]]; then
+    citcWorkspace=$(citctools info 2>/dev/null | grep ^Root | awk '{print $3}' | sed "s:.*/::")
+    iterm2_set_user_var citcWorkspace $citcWorkspace
+  else
+    iterm2_set_user_var citcWorkspace "..."
+  fi
+}
+
+# TODO: Add zshrc for google3 fzf codesearch
+# source ~/.bash_functions
+
+# [[ $- == *i* ]] && source /usr/share/zsh-completion/completions/fzf 2> /dev/null
+# TODO: Find the right way to reference this path, because the version number will change.
+# source /opt/homebrew/Cellar/fzf/0.54.3/shell/key-bindings.zsh
+
+# Add fzf support for custom commands
+# fzf-completion path g4 devsite evsite
+
+# Configure bindings
+# export FZF_CTRL_T_COMMAND=_fzf_compgen_path
+# export FZF_DEFAULT_COMMAND=_fzf_compgen_path
+# export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
