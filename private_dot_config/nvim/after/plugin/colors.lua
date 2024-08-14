@@ -1,4 +1,3 @@
-print("hello from colors")
 -- require('monokai').setup({
 -- })
 

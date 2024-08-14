@@ -1,4 +1,3 @@
-print("hello from cloak")
 require("cloak").setup({
   enabled = true,
   cloak_character = "*",

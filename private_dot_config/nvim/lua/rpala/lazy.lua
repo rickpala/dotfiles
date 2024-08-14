@@ -104,6 +104,8 @@ require("lazy").setup({
     {"neoclide/coc.nvim", branch = "release"},
     {"junegunn/fzf.vim"},
 
+    -- Autosuggestions above the Vim command line
+    {"gelguy/wilder.nvim"},
 })
 
 

@@ -1,5 +1,3 @@
-print("hello from rpala/remap.lua")
-
 -- Shortcut
 function feedkeys(key, mode)
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, false)
@@ -73,6 +71,5 @@ vim.keymap.set("n", "<leader>fi", function() require('telescope.builtin').curren
 
 -- Nerdtree
 vim.keymap.set("n", "<leader>n", vim.cmd.NERDTreeFocus)
-vim.keymap.set("n", "<C-n>", vim.cmd.NERDTree)
-vim.keymap.set("n", "<C-c>", vim.cmd.NERDTreeToggle)
+vim.keymap.set("n", "<C-e>", vim.cmd.NERDTreeToggle)
 vim.keymap.set("n", "<C-f>", vim.cmd.NERDTreeFind)
