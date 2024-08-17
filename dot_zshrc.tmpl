@@ -48,14 +48,19 @@ plugins=(
 )
 source $ZSH/oh-my-zsh.sh
 
-{{- if eq .machine "google_linux" }}
-  source $HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
-  source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-{{- else if eq .chezmoi.os "darwin"}}
+if [[
+  $HOSTNAME == "google_macbook"
+  || $HOSTNAME == "google_macstudio"
+  || $HOSTNAME == "personal_macbook" ]]; then 
   source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
   source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-{{- end}}
+elif [[ $HOSTNAME == "google_linux" ]]; then
+fi
 
+{{- if eq .chezmoi.hostname "google_linux" }}
+  source $HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+{{- end}}
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -67,6 +72,7 @@ source ~/.zsh_aliases
 
 source $HOME/.iterm2_shell_integration.zsh
 
+
 # Find directories faster using via `zoxide` autocomplete instead of `cd`.
 eval "$(zoxide init zsh)"
 
@@ -77,11 +83,8 @@ source <(fzf --zsh)
 bindkey -v
 
 # Run google-specific commands for gLinux or gMac, or personal commands.
-{{- if (or
-  (eq .machine "google_macbook")
-  (eq .machine "google_macstudio")
-  (eq .machine "google_linux")) }}
+if [[ $MACHINE == "google_macbook" ]] ; then 
   source ~/.zshrc_google
-{{- else if eq .machine "personal_macbook" }}
+elif [[ $MACHINE == "personal_macbook" ]]; then
   source ~/.zshrc_personal
-{{- end }}
+fi
