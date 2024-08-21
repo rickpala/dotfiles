@@ -1,4 +1,6 @@
-alias gcertall="gcert; ssh -t rickpala.c.googlers.com 'gcert; sh -i; exit'"
+alias gcertall="echo 'Remember to use command start :)'; gcert; ssh -t rickpala.c.googlers.com 'gcert; sh -i; exit'"
+alias start="gcertall; blaze_restart_all"
+
 # Change Directory go_links
 alias go_lens="cd googlemac/iPhone/Lens"
 alias go_iga="cd googlemac/GoogleMobile"
