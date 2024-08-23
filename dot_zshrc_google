@@ -129,3 +129,7 @@ blaze_restart_all() {
   echo "Killing process cidermux"
   pkill cidermux
 }
+
+
+# Use Developer Builds in Prod. See go/dbip#onboarding
+export REPLACE_BLAZE_WITH_DBIP=1
