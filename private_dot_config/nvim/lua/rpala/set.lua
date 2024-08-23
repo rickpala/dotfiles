@@ -1,3 +1,5 @@
+print("hello from rpala/set.lua")
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 
