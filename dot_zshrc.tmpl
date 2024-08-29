@@ -1,17 +1,3 @@
-# Determine what machine you are running.
-# Cases:
-#   personal_macbook
-#   google_macbook
-#   google_macstudio
-#   google_linux
-#   unknown
-if [[ -f ~/.machine_type ]]; then
-  export MACHINE=$(cat ~/.machine_type)
-  echo "You are on machine $MACHINE"
-else
-  export MACHINE="unknown"
-fi
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -45,22 +31,24 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
+  zsh-vim-mode
 )
 source $ZSH/oh-my-zsh.sh
 
-if [[
-  $HOSTNAME == "google_macbook"
-  || $HOSTNAME == "google_macstudio"
-  || $HOSTNAME == "personal_macbook" ]]; then 
-  source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-  source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-elif [[ $HOSTNAME == "google_linux" ]]; then
-fi
-
-{{- if eq .chezmoi.hostname "google_linux" }}
+# Source zsh plugins according to where they're installed on the OS
+{{- if eq .machine "google_linux" }}
   source $HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
   source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source $HOME/zsh-vim-mode/zsh-vim-mode.zsh
+{{- else if eq .chezmoi.os "darwin" }}
+  source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source $(brew --prefix)/share/zsh-vim-mode/zsh-vim-mode.zsh
+
+  # iTerm2 Integration
+  source $HOME/.iterm2_shell_integration.zsh
 {{- end}}
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -69,9 +57,6 @@ source ~/.zsh_aliases
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-source $HOME/.iterm2_shell_integration.zsh
-
 
 # Find directories faster using via `zoxide` autocomplete instead of `cd`.
 eval "$(zoxide init zsh)"
@@ -83,8 +68,11 @@ source <(fzf --zsh)
 bindkey -v
 
 # Run google-specific commands for gLinux or gMac, or personal commands.
-if [[ $MACHINE == "google_macbook" ]] ; then 
+{{- if (or
+  (eq .machine "google_macbook")
+  (eq .machine "google_macstudio")
+  (eq .machine "google_linux"))}}
   source ~/.zshrc_google
-elif [[ $MACHINE == "personal_macbook" ]]; then
+{{- else if eq .machine "personal_macbook" }}
   source ~/.zshrc_personal
-fi
+{{- end}}
