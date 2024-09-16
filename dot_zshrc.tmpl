@@ -42,6 +42,9 @@ source $ZSH/oh-my-zsh.sh
   # iTerm2 Integration
   source $HOME/.iterm2_shell_integration.zsh  
 
+  # Add Node to PATH
+  echo 'export PATH="/opt/homebrew/opt/node@20/bin:$PATH"' >> ~/.zshrc
+
   # Homebrew added to zsh
   source $HOME/.zprofile
 {{- end}}
