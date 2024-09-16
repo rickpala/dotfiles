@@ -41,45 +41,35 @@ brew install chezmoi
 
 # Using `chezmoi` to setup, install, and modify dotfiles:
 
-If you already have an existing chezmoi environment, sync to Github remote in one line:
+1. Set any machine-specific data in the config file. By default it lives at `~/.config/chezmoi/chezmoi.toml`.
+```toml
+# This toml file is NOT managed by chezmoi. Instead this
+# file tells chezmoi what machine-specific data you wish to store.
+[data]
+  email = "email@hostname.com"
+  machine = "personal_macbook"
+```
+
+2. If you already have an existing chezmoi environment, sync to Github remote in one line:
 ```sh
 chezmoi init --apply $GITHUB_USERNAME
 ```
 
-If you need to make edits to your dotfiles, use:
+3. If you need to make edits to your dotfiles, use:
 ```sh
 chezmoi edit <filename>
 ```
 
-Once you're ready to push your changes to remote, use:
+4. Once you're ready to push your changes to remote, use:
 ```sh
 chezmoi git -- add
 chezmoi git -- commit -m "Update dotfiles"
 ```
 
-You can store machine-specific data in the config file. By default it is
-`~/.config/chezmoi/chezmoi.toml`.
+5. On any machine, you can pull and apply the latest updates with:
+```sh
+chezmoi update -v
+```
 
 Read more about chezmoi's daily operations at
 [chezmoi.io/user-guide/daily-operations](chezmoi.io/user-guide/daily-operations)
-
-# `chezmoi` quickstart
-
-If you're confident in your existing setup pushed to thsi repo, use the following lines:
-
-```sh
-# check out the repo and any submodules and optionally create a chezmoi config file for you.
-chezmoi init https://github.com/rickpala/dotfiles.git
-
-# Check what changes that chezmoi will make to your home directory by running:
-chezmoi diff
-
-# If you are happy with the changes that chezmoi will make then run:
-chezmoi apply -v
-
-# If you are NOT happy, invoke a merge tool to merge changes between the two files:
-chezmoi merge $FILE
-
-# On any machine, you can pull and apply the latest updates with:
-chezmoi update -v
-```
