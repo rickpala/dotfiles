@@ -27,16 +27,10 @@ Install these apps first:
     eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 
-3.  Install [`neovim`](https://neovim.io/)
+3.  Homebrew install [`neovim`](https://neovim.io/), [`chezmoi`](https://www.chezmoi.io/quick-start/), and [`node`](https://nodejs.org/en/download/package-manager)
 
 ```sh
-brew install neovim
-```
-
-5.  Install [`chezmoi`](https://www.chezmoi.io/quick-start/)
-
-```sh
-brew install chezmoi
+brew install neovim chezmoi node
 ```
 
 # Using `chezmoi` to setup, install, and modify dotfiles:
