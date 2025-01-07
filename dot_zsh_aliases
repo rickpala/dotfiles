@@ -9,3 +9,6 @@ alias go_photos="cd googlemac/iPhone/Photos"
 
 # Fig aliases
 alias fau="hg fix && hg amend && hg uc"
+
+alias bb="blaze build --config=ios_sim_arm64"
+alias bt="blaze test --config=ios_sim_arm64"
