@@ -10,5 +10,10 @@ alias go_photos="cd googlemac/iPhone/Photos"
 # Fig aliases
 alias fau="hg fix && hg amend && hg uc"
 
+# Blaze aliases
 alias bb="blaze build --config=ios_sim_arm64"
 alias bt="blaze test --config=ios_sim_arm64"
+alias btl="bt --test_strategy=local"
+alias btf="bt --test_strategy=forge"
+alias btl50="btl --runs_per_test=50 --define=lens.build_type=head --xcode_version=15.4.0"
+alias btf50="btf --runs_per_test=50 --define=lens.build_type=head --xcode_version=15.4.0"
