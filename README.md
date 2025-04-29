@@ -13,6 +13,7 @@ Install these apps first:
   * CleanMyMac X
   * CleanShot X
   * iStat Menus
+  * NotchNook
   * ...and anything else :)
 
 # 💲 Setting up a new Shell environment on MacOS?
