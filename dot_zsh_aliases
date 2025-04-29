@@ -1,5 +1,3 @@
-alias gcertall="echo 'Remember to use command start :)'; gcert; ssh -t rickpala.c.googlers.com 'gcert; sh -i; exit'"
-alias start="gcertall; blaze_restart_all"
 alias srl=/google/bin/releases/srlregistry/cli/srl
 
 # Change Directory go_links
@@ -13,8 +11,8 @@ alias fau="hg fix && hg amend && hg uc"
 # Blaze aliases
 alias bb="blaze build --config=ios_sim_arm64"
 alias bt="blaze test --config=ios_sim_arm64"
-alias btl="bt --test_strategy=local"
-alias btf="bt --test_strategy=forge"
-alias btl50="btl --runs_per_test=50 --define=lens.build_type=head --xcode_version=15.4.0"
-alias btf50="btf --runs_per_test=50 --define=lens.build_type=head --xcode_version=15.4.0"
-alias btf50x86="blaze test --runs_per_test=50 -define=lens.build_type=head --xcode_version=15.4.0 --test_strategy=forge"
+alias btl="blaze test --config=ios_sim_arm64 --test_strategy=local"
+alias btf="blaze test --config=ios_sim_arm64 --test_strategy=forge"
+alias btl50="blaze test --config=ios_sim_arm64 --test_strategy=local --runs_per_test=50 --define=lens.build_type=head --xcode_version=16.0.0"
+alias btf50="blaze test --config=ios_sim_arm64 --test_strategy=forge --runs_per_test=50 --define=lens.build_type=head --xcode_version=16.0.0"
+alias btf50x86="blaze test --config=ios_x64_64 --runs_per_test=50 -define=lens.build_type=head --xcode_version=16.0.0 --test_strategy=forge"
