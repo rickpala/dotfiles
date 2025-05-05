@@ -28,10 +28,11 @@ Install these apps first:
     eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 
-3.  Homebrew install [`neovim`](https://neovim.io/), [`chezmoi`](https://www.chezmoi.io/quick-start/), and [`node`](https://nodejs.org/en/download/package-manager)
+3.  Homebrew install [`neovim`](https://neovim.io/), [`chezmoi`](https://www.chezmoi.io/quick-start/),
+[`node`](https://nodejs.org/en/download/package-manager), and [`bitwarden`](https://bitwarden.com/download/)
 
 ```sh
-brew install neovim chezmoi node
+brew install neovim chezmoi node bitwarden
 ```
 
 # Using `chezmoi` to setup, install, and modify dotfiles:
